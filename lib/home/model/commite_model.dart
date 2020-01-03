@@ -1,3 +1,17 @@
+class ListCommitHistoryModel {
+  List<CommitHistoryModel> listCommitHistory;
+
+  ListCommitHistoryModel({
+    this.listCommitHistory,
+  });
+
+  factory ListCommitHistoryModel.fromJson(List<Map<String, dynamic>> json) =>
+      ListCommitHistoryModel(
+        listCommitHistory: List<CommitHistoryModel>.from(
+            (json ?? []).map((x) => CommitHistoryModel.fromJson(x))),
+      );
+}
+
 class CommitHistoryModel {
   String sha;
   String nodeId;
@@ -21,18 +35,19 @@ class CommitHistoryModel {
     this.parents,
   });
 
-  factory CommitHistoryModel.fromJson(Map<String, dynamic> json) => CommitHistoryModel(
-    sha: json["sha"],
-    nodeId: json["node_id"],
-    commit: Commit.fromJson(json["commit"]),
-    url: json["url"],
-    htmlUrl: json["html_url"],
-    commentsUrl: json["comments_url"],
-    author: json["author"],
-    committer: json["committer"],
-    parents: List<Parent>.from(json["parents"].map((x) => Parent.fromJson(x))),
-  );
-
+  factory CommitHistoryModel.fromJson(Map<String, dynamic> json) =>
+      CommitHistoryModel(
+        sha: json["sha"],
+        nodeId: json["node_id"],
+        commit: Commit.fromJson(json["commit"]),
+        url: json["url"],
+        htmlUrl: json["html_url"],
+        commentsUrl: json["comments_url"],
+        author: json["author"],
+        committer: json["committer"],
+        parents:
+            List<Parent>.from(json["parents"].map((x) => Parent.fromJson(x))),
+      );
 }
 
 class Commit {
@@ -55,14 +70,14 @@ class Commit {
   });
 
   factory Commit.fromJson(Map<String, dynamic> json) => Commit(
-    author: Author.fromJson(json["author"]),
-    committer: Author.fromJson(json["committer"]),
-    message: json["message"],
-    tree: Tree.fromJson(json["tree"]),
-    url: json["url"],
-    commentCount: json["comment_count"],
-    verification: Verification.fromJson(json["verification"]),
-  );
+        author: Author.fromJson(json["author"]),
+        committer: Author.fromJson(json["committer"]),
+        message: json["message"],
+        tree: Tree.fromJson(json["tree"]),
+        url: json["url"],
+        commentCount: json["comment_count"],
+        verification: Verification.fromJson(json["verification"]),
+      );
 }
 
 class Author {
@@ -77,11 +92,10 @@ class Author {
   });
 
   factory Author.fromJson(Map<String, dynamic> json) => Author(
-    name: json["name"],
-    email: json["email"],
-    date: DateTime.parse(json["date"]),
-  );
-
+        name: json["name"],
+        email: json["email"],
+        date: DateTime.parse(json["date"]),
+      );
 }
 
 class Tree {
@@ -94,9 +108,9 @@ class Tree {
   });
 
   factory Tree.fromJson(Map<String, dynamic> json) => Tree(
-    sha: json["sha"],
-    url: json["url"],
-  );
+        sha: json["sha"],
+        url: json["url"],
+      );
 }
 
 class Verification {
@@ -113,11 +127,11 @@ class Verification {
   });
 
   factory Verification.fromJson(Map<String, dynamic> json) => Verification(
-    verified: json["verified"],
-    reason: json["reason"],
-    signature: json["signature"],
-    payload: json["payload"],
-  );
+        verified: json["verified"],
+        reason: json["reason"],
+        signature: json["signature"],
+        payload: json["payload"],
+      );
 }
 
 class Parent {
@@ -132,8 +146,8 @@ class Parent {
   });
 
   factory Parent.fromJson(Map<String, dynamic> json) => Parent(
-    sha: json["sha"],
-    url: json["url"],
-    htmlUrl: json["html_url"],
-  );
+        sha: json["sha"],
+        url: json["url"],
+        htmlUrl: json["html_url"],
+      );
 }
