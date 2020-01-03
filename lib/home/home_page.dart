@@ -38,9 +38,7 @@ class _MyHomePageState extends State<MyHomePage> {
             case ConnectionState.waiting:
               return Container(
                   child: Center(
-                      child: CircularProgressIndicator(
-                          valueColor:
-                              AlwaysStoppedAnimation<Color>(Colors.white))));
+                      child: CircularProgressIndicator()));
               break;
             case ConnectionState.done:
               print('---....>>> ${snapShot.data.listCommitHistory}');
@@ -117,7 +115,9 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          _futureGitCommit = _homePageService.getCommitHistory();
+          setState(() {
+            _futureGitCommit = _homePageService.getCommitHistory();
+          });
         },
         tooltip: 'Increment',
         child: Icon(Icons.refresh),
