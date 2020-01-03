@@ -11,7 +11,7 @@ This project is a starting point for a Flutter application.
 
 # Home Screen:
  - Display List of commit history of "MyCommits" project
- - Name of author, commit message, and date
- - There is refresh button on top right side 
- - After clicking on refresh button, It will display fresh data
+ - Commit message, Name of author and date
+ - There is refresh button at bottom right side 
+ - By clicking on refresh button, You will fetch fresh data of git commit
     
